@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeKids | Disaster Preparedness Education</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .grade-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .disaster-card {
+            transition: all 0.3s ease;
+        }
+        .disaster-card:hover {
+            transform: scale(1.03);
+        }
+        .dropdown-content {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .active-tab {
+            border-bottom: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-shield-alt text-3xl"></i>
+                <h1 class="text-2xl md:text-3xl font-bold">SafeKids</h1>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="hover:text-blue-200 font-medium">Home</a>
+                <a href="#materials" class="hover:text-blue-200 font-medium">Materials</a>
+                <a href="#about" class="hover:text-blue-200 font-medium">About</a>
+                <a href="#contact" class="hover:text-blue-200 font-medium">Contact</a>
+            </nav>
+            <button class="md:hidden text-xl" id="mobile-menu-button">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-700 pb-4" id="mobile-menu">
+            <div class="container mx-auto px-4 flex flex-col space-y-3">
+                <a href="#" class="text-white hover:text-blue-200 py-2">Home</a>
+                <a href="#materials" class="text-white hover:text-blue-200 py-2">Materials</a>
+                <a href="#about" class="text-white hover:text-blue-200 py-2">About</a>
+                <a href="#contact" class="text-white hover:text-blue-200 py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Disaster Preparedness for Young Learners</h1>
+                <p class="text-xl mb-6">Empowering students from Year 1 to Year 10 with life-saving knowledge through engaging educational materials.</p>
+                <a href="#materials" class="bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-blue-100 transition duration-300 inline-block">Explore Materials</a>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kids learning about safety" class="rounded-lg shadow-xl max-w-full h-auto">
+            </div>
+        </div>
+    </section>
+
+    <!-- Why It Matters Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Why Disaster Preparedness Matters</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-heartbeat text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Saves Lives</h3>
+                    <p class="text-gray-600">Proper education can significantly reduce injuries and fatalities during disasters.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Early Learning</h3>
+                    <p class="text-gray-600">Children who learn safety skills early retain them throughout their lives.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-xl shadow-md text-center">
+                    <div class="bg-blue-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 text-gray-800">Community Impact</h3>
+                    <p class="text-gray-600">Educated children often teach their families, amplifying the safety impact.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materials by Grade Section -->
+    <section id="materials" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-800">Educational Materials by Grade</h2>
+            <p class="text-xl text-center mb-12 text-gray-600">Select a grade level to explore age-appropriate disaster preparedness resources</p>
+            
+            <!-- Grade Level Tabs -->
+            <div class="flex overflow-x-auto pb-2 mb-8 hide-scrollbar">
+                <div class="flex space-x-0 mx-auto">
+                    <button class="grade-tab px-4 py-2 font-medium text-gray-600 active-tab" data-grade="primary">Primary School</button>
+                    <button class="grade-tab px-4 py-2 font-medium text-gray-600" data-grade="middle">Middle School</button>
+                    <button class="grade-tab px-4 py-2 font-medium text-gray-600" data-grade="high">High School</button>
+                </div>
+            </div>
+
+            <!-- Primary School Content -->
+            <div id="primary-content" class="grade-content">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+                    <!-- Year 1 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-blue-600">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 1</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Basic emergency recognition</p>
+                        <button class="mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition" data-grade="1">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 2 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-blue-600">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 2</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Emergency contacts & basic drills</p>
+                        <button class="mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition" data-grade="2">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 3 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-blue-600">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 3</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Fire safety basics</p>
+                        <button class="mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition" data-grade="3">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 4 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-blue-600">4</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 4</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Weather awareness</p>
+                        <button class="mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition" data-grade="4">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 5 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-blue-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-blue-600">5</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 5</h3>
+                        <p class="text-gray-600 mb-4 text-sm">First aid introduction</p>
+                        <button class="mt-auto bg-blue-100 text-blue-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-200 transition" data-grade="5">View Materials</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle School Content (Hidden by default) -->
+            <div id="middle-content" class="grade-content hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Year 6 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-green-600">6</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 6</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Comprehensive emergency plans</p>
+                        <button class="mt-auto bg-green-100 text-green-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-200 transition" data-grade="6">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 7 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-green-600">7</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 7</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Natural disaster response</p>
+                        <button class="mt-auto bg-green-100 text-green-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-200 transition" data-grade="7">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 8 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-green-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-green-600">8</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 8</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Advanced first aid skills</p>
+                        <button class="mt-auto bg-green-100 text-green-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-green-200 transition" data-grade="8">View Materials</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High School Content (Hidden by default) -->
+            <div id="high-content" class="grade-content hidden">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Year 9 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-purple-600">9</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 9</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Community emergency leadership</p>
+                        <button class="mt-auto bg-purple-100 text-purple-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-200 transition" data-grade="9">View Materials</button>
+                    </div>
+                    
+                    <!-- Year 10 -->
+                    <div class="grade-card bg-white p-6 rounded-xl shadow-md hover:cursor-pointer transform transition duration-300 flex flex-col items-center text-center">
+                        <div class="bg-purple-100 w-20 h-20 rounded-full flex items-center justify-center mb-4">
+                            <span class="text-3xl font-bold text-purple-600">10</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Year 10</h3>
+                        <p class="text-gray-600 mb-4 text-sm">Advanced emergency response training</p>
+                        <button class="mt-auto bg-purple-100 text-purple-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-purple-200 transition" data-grade="10">View Materials</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grade Level Modal -->
+            <div id="grade-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center p-4">
+                <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="flex justify-between items-center border-b p-4">
+                        <h3 class="text-xl font-bold" id="modal-title">Year 1 Materials</h3>
+                        <button id="close-modal" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="p-6" id="modal-content">
+                        <!-- Content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disaster Types Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Types of Disasters We Prepare For</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Natural Disasters -->
+                <div class="disaster-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-xl shadow-md border-l-4 border-blue-400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-tree text-blue-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Natural Disasters</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-blue-400 mr-2 text-xs"></i> Earthquakes</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-blue-400 mr-2 text-xs"></i> Floods</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-blue-400 mr-2 text-xs"></i> Hurricanes</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-blue-400 mr-2 text-xs"></i> Wildfires</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-blue-400 mr-2 text-xs"></i> Tornadoes</li>
+                    </ul>
+                </div>
+                
+                <!-- Human-Caused Disasters -->
+                <div class="disaster-card bg-gradient-to-br from-red-50 to-red-100 p-6 rounded-xl shadow-md border-l-4 border-red-400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-red-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-user-shield text-red-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Human-Caused Disasters</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-red-400 mr-2 text-xs"></i> Fire safety</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-red-400 mr-2 text-xs"></i> Chemical spills</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-red-400 mr-2 text-xs"></i> Active shooter</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-red-400 mr-2 text-xs"></i> Terrorism response</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-red-400 mr-2 text-xs"></i> Power outages</li>
+                    </ul>
+                </div>
+                
+                <!-- Health Emergencies -->
+                <div class="disaster-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-xl shadow-md border-l-4 border-green-400">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-green-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-heartbeat text-green-600 text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Health Emergencies</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-green-400 mr-2 text-xs"></i> First aid training</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-green-400 mr-2 text-xs"></i> Pandemic response</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-green-400 mr-2 text-xs"></i> Choking hazards</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-green-400 mr-2 text-xs"></i> Allergic reactions</li>
+                        <li class="flex items-center"><i class="fas fa-chevron-right text-green-400 mr-2 text-xs"></i> CPR basics</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">What Educators Say</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-user-tie text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sarah Johnson</h4>
+                            <p class="text-gray-500 text-sm">Primary School Teacher</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The age-appropriate materials for Year 3 students helped make complex safety concepts accessible. My students now confidently know what to do during fire drills."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="bg-yellow-100 w-12 h-12 rounded-full flex items-center justify-center mr-4 flex-shrink-0">
+                            <i class="fas fa-user-graduate text-yellow-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Michael Chen</h4>
+                            <p class="text-gray-500 text-sm">Middle School Principal</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Implementing the Year 7 natural disaster program has given our students not just knowledge, but confidence. Several families reported their children helped during recent flood warnings."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-blue-600 text-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <h2 class="text-3xl font-bold mb-6">About SafeKids</h2>
+                    <p class="mb-4 text-blue-100">SafeKids is a comprehensive disaster preparedness education platform designed specifically for students from Year 1 through Year 10.</p>
+                    <p class="mb-4 text-blue-100">Our mission is to make emergency preparedness accessible, engaging, and developmentally appropriate for all school-aged children.</p>
+                    <p class="text-blue-100">Developed in partnership with emergency responders, educators, and child psychologists, our materials meet national safety education standards.</p>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img src="https://images.unsplash.com/photo-1519406596751-0a3ccc4937fe?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Kids learning safety" class="rounded-lg shadow-xl max-w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Contact Us</h2>
+            <div class="bg-gray-50 p-8 rounded-xl shadow-md">
+                <form id="contact-form">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"></textarea>
+                    </div>
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition w-full">Send Message</button>
+                </form>
+                <div id="form-success" class="hidden mt-4 p-4 bg-green-100 text-green-800 rounded-lg">
+                    Thank you for your message! We'll get back to you soon.
+                </div>
+                <div id="form-error" class="hidden mt-4 p-4 bg-red-100 text-red-800 rounded-lg">
+                    Please fill in all required fields.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4 flex items-center">
+                        <i class="fas fa-shield-alt mr-2"></i> SafeKids
+                    </h3>
+                    <p class="text-gray-400">Empowering the next generation with life-saving knowledge through comprehensive disaster preparedness education.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+                        <li><a href="#materials" class="text-gray-400 hover:text-white transition">Materials</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">For Teachers</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">For Parents</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Lesson Plans</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Activities</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <a href="#" class="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-600 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-blue-400 transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-purple-600 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="bg-gray-700 w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-600 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                    <p class="text-gray-400">Subscribe to our newsletter</p>
+                    <div class="mt-2 flex">
+                        <input type="email" placeholder="Your email" class="px-3 py-2 bg-gray-700 text-white rounded-l focus:outline-none w-full">
+                        <button class="bg-blue-600 px-4 rounded-r hover:bg-blue-700 transition">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2023 SafeKids Disaster Preparedness. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Grade Level Tabs
+        const gradeTabs = document.querySelectorAll('.grade-tab');
+        const gradeContents = document.querySelectorAll('.grade-content');
+        
+        gradeTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                gradeTabs.forEach(t => t.classList.remove('active-tab', 'text-blue-600', 'text-green-600', 'text-purple-600'));
+                
+                // Add active class to clicked tab
+                const gradeType = this.dataset.grade;
+                if (gradeType === 'primary') {
+                    this.classList.add('active-tab', 'text-blue-600');
+                } else if (gradeType === 'middle') {
+                    this.classList.add('active-tab', 'text-green-600');
+                } else if (gradeType === 'high') {
+                    this.classList.add('active-tab', 'text-purple-600');
+                }
+                
+                // Hide all content
+                gradeContents.forEach(content => content.classList.add('hidden'));
+                
+                // Show selected content
+                document.getElementById(`${gradeType}-content`).classList.remove('hidden');
+            });
+        });
+
+        // Grade Material Modals
+        const gradeButtons = document.querySelectorAll('.grade-card button');
+        const gradeModal = document.getElementById('grade-modal');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+        const closeModal = document.getElementById('close-modal');
+        
+        // Sample materials data - in a real app, this would come from a database
+        const gradeMaterials = {
+            1: {
+                title: "Year 1 Disaster Preparedness Materials",
+                description: "Basic emergency recognition for young learners",
+                resources: [
+                    {type: "Coloring Book", title: "Emergency Helpers Coloring Book", format: "PDF", link: "#"},
+                    {type: "Flashcards", title: "Emergency Signals Flashcards", format: "PDF", link: "#"},
+                    {type: "Video", title: "What is an Emergency?", format: "YouTube", link: "#"},
+                    {type: "Activity", title: "Emergency Contact Practice Sheet", format: "PDF", link: "#"}
+                ]
+            },
+            2: {
+                title: "Year 2 Disaster Preparedness Materials",
+                description: "Emergency contacts & basic drills",
+                resources: [
+                    {type: "Poster", title: "Emergency Numbers Poster", format: "PDF", link: "#"},
+                    {type: "Lesson Plan", title: "Introduction to Fire Drills", format: "PDF", link: "#"},
+                    {type: "Activity", title: "Home Safety Checklist", format: "PDF", link: "#"},
+                    {type: "Video", title: "Fire Drill Demonstration", format: "YouTube", link: "#"}
+                ]
+            },
+            3: {
+                title: "Year 3 Disaster Preparedness Materials",
+                description: "Fire safety basics",
+                resources: [
+                    {type: "Workbook", title: "Fire Safety Basics Workbook", format: "PDF", link: "#"},
+                    {type: "Experiment", title: "Stop, Drop & Roll Demonstration", format: "PDF Guide", link: "#"},
+                    {type: "Poster", title: "Fire Safety Rules", format: "PDF", link: "#"},
+                    {type: "Game", title: "Fire Safety Memory Match", format: "Printable", link: "#"}
+                ]
+            },
+            // ... (similar data structures for grades 4-10)
+            10: {
+                title: "Year 10 Disaster Preparedness Materials",
+                description: "Advanced emergency response training",
+                resources: [
+                    {type: "Course", title: "Basic Emergency Response Certification", format: "Online", link: "#"},
+                    {type: "Manual", title: "Community Emergency Handbook", format: "PDF", link: "#"},
+                    {type: "Simulation", title: "Disaster Scenario Simulations", format: "PDF Guide", link: "#"},
+                    {type: "Checklist", title: "Emergency Kit Advanced Checklist", format: "PDF", link: "#"}
+                ]
+            }
+        };
+
+        gradeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const grade = this.dataset.grade;
+                const materials = gradeMaterials[grade];
+                
+                modalTitle.textContent = materials.title;
+                
+                // Build modal content
+                let contentHTML = `
+                    <div class="mb-6">
+                        <p class="text-gray-600">${materials.description}</p>
+                    </div>
+                    <h4 class="font-semibold text-lg mb-4">Available Resources:</h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                `;
+                
+                materials.resources.forEach(resource => {
+                    contentHTML += `
+                        <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                            <div class="flex items-center mb-2">
+                                <span class="text-xs font-medium px-2 py-1 rounded ${getResourceColorClass(resource.type)} mr-2">${resource.type}</span>
+                                <span class="text-xs text-gray-500">${resource.format}</span>
+                            </div>
+                            <h5 class="font-medium mb-1">${resource.title}</h5>
+                            <a href="${resource.link}" class="text-blue-600 text-sm hover:underline">View Resource</a>
+                        </div>
+                    `;
+                });
+                
+                contentHTML += `</div>`;
+                
+                // Add grade-specific tips
+                if (grade <= 3) {
+                    contentHTML += `
+                        <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                            <h5 class="font-medium text-blue-800 mb-2"><i class="fas fa-lightbulb mr-2"></i> Teaching Tip</h5>
+                            <p class="text-blue-700 text-sm">For younger students, incorporate hands-on activities and games to reinforce safety concepts through repetition.</p>
+                        </div>
+                    `;
+                } else if (grade <= 8) {
+                    contentHTML += `
+                        <div class="bg-green-50 p-4 rounded-lg border border-green-200">
+                            <h5 class="font-medium text-green-800 mb-2"><i class="fas fa-lightbulb mr-2"></i> Teaching Tip</h5>
+                            <p class="text-green-700 text-sm">Middle school students engage well with real-life scenarios. Consider role-playing emergencies to practice decision-making.</p>
+                        </div>
+                    `;
+                } else {
+                    contentHTML += `
+                        <div class="bg-purple-50 p-4 rounded-lg border border-purple-200">
+                            <h5 class="font-medium text-purple-800 mb-2"><i class="fas fa-lightbulb mr-2"></i> Teaching Tip</h5>
+                            <p class="text-purple-700 text-sm">High school students can handle more complex scenarios. Incorporate leadership training as they may need to help others during emergencies.</p>
+                        </div>
+                    `;
+                }
+                
+                modalContent.innerHTML = contentHTML;
+                gradeModal.classList.remove('hidden');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            });
+        });
+
+        // Helper function for resource type colors
+        function getResourceColorClass(type) {
+            switch(type) {
+                case 'Video': return 'bg-red-100 text-red-800';
+                case 'Activity': return 'bg-yellow-100 text-yellow-800';
+                case 'Game': return 'bg-green-100 text-green-800';
+                case 'Lesson Plan': return 'bg-blue-100 text-blue-800';
+                case 'Course': return 'bg-purple-100 text-purple-800';
+                default: return 'bg-gray-100 text-gray-800';
+            }
+        }
+
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            gradeModal.classList.add('hidden');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        });
+
+        // Close modal when clicking outside
+        gradeModal.addEventListener('click', function(e) {
+            if (e.target === gradeModal) {
+                gradeModal.classList.add('hidden');
+                document.body.style.overflow = ''; // Re-enable scrolling
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                document.getElementById('form-error').classList.remove('hidden');
+                document.getElementById('form-success').classList.add('hidden');
+                return;
+            }
+            
+            // In a real app, you would send this data to your server
+            document.getElementById('form-error').classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
+            
+            // Reset form
+            this.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('form-success').classList.add('hidden');
+            }, 5000);
+        });
+    </script>
+</body>
+</html>
